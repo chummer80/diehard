@@ -1,0 +1,74 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'bootstrap';
+
+$primary_color: black;
+$secondary_color: lightgrey;
+$accent_color: #E51E27;
+
+body {
+	background-color: $primary_color;
+	color: $secondary_color;
+	position: relative;
+}
+
+nav.navbar {
+	background-color: $primary_color;
+
+	.dropdown-menu {
+		background-color: $secondary_color;
+
+		a { 
+			color: $primary_color;
+		}
+		>li > a:hover, a:active {
+			color: $accent_color;
+			background-color: $secondary_color;
+		}
+	}
+
+	a { 
+		color: $secondary_color;
+	}
+	.open > a {
+		color: $primary_color;
+	}
+	.open > a:hover, .open > a:focus, li > a:hover, .nav > li > a:focus {
+		background-color: $secondary_color;
+	}
+
+
+	a:hover, .nav > li > a:focus {
+		color: $accent_color;
+	}
+
+	.navbar-brand {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	.navbar-toggle .icon-bar {
+		background-color: $secondary_color;
+	}
+	.navbar-toggle:hover .icon-bar {
+		background-color: $accent_color;
+	}
+
+	li.active > a {
+		background-color: $secondary_color;
+		color: $accent_color;
+	}
+}
+
+section {
+	height: 800px;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+p {
+	font-size: 20px;
+}
