@@ -15,7 +15,7 @@ body {
 
 nav.navbar {
 	background-color: $primary_color;
-
+	border-bottom: 1px solid $accent_color;
 	.dropdown-menu {
 		background-color: $secondary_color;
 
@@ -106,7 +106,7 @@ p {
 	width: 40%;
 }
 
-.movie, .hero, .villain {
+.movie, .character {
 	@include centered;
 	padding: 20px;
 	margin-bottom: 50px;
