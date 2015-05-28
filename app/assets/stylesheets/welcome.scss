@@ -28,6 +28,10 @@ nav.navbar {
 		}
 	}
 
+	.navbar-nav .open .dropdown-menu, .nav .open > a {
+		background-color: $secondary_color;
+	}
+
 	a { 
 		color: $secondary_color;
 	}
