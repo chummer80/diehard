@@ -47,23 +47,29 @@
 		</div>
 	</section>
 
-	<section id="heroes">
-		<h1>HEROES</h1>
+	<% char_lists = { 
+		"heroes" => @heroes, 
+		"villains" => @villains
+	} %>
+
+	<% char_lists.each do |key, char_list| %>
+	<section id="<%= key %>">
+		<h1><%= key.upcase %></h1>
 
 		<div class="container-fluid">
-			<% @heroes.each_index do |i| %>
+			<% char_list.each_index do |i| %>
 			<% if i.even? %>
 			<div class="row">
 			<% end %>
-			<% hero = @heroes[i] %>
-				<div id="<%= hero[:id] %>" class="col-md-6 hero">
-					<h2><%= hero[:name] %></h2>
-					<%= image_tag(hero[:image], class: "portrait") %>
-					<p><%= hero[:description] %></p>
+			<% character = char_list[i] %>
+				<div id="<%= character[:id] %>" class="col-md-6 character">
+					<h2><%= character[:name] %></h2>
+					<%= image_tag(character[:image], class: "portrait") %>
+					<p><%= character[:description] %></p>
 					<p>
 						Movies: 
-						<% hero[:movies].each_index do |j| %>
-						<% movie = hero[:movies][j] %>
+						<% character[:movies].each_index do |j| %>
+						<% movie = character[:movies][j] %>
 						<% if j > 0 %>,<% end %>
 						<%= link_to movie[:title], movie[:link] %>
 						<% end %>
@@ -75,33 +81,6 @@
 			<% end %>
 		</div>
 	</section>
+	<% end %>
 
-	<section id="villains">
-		<h1>VILLAINS</h1>
-
-		<div class="container-fluid">
-			<% @villains.each_index do |i| %>
-			<% if i.even? %>
-			<div class="row">
-			<% end %>
-			<% villain = @villains[i] %>
-				<div id="<%= villain[:id] %>" class="col-md-6 villain">
-					<h2><%= villain[:name] %></h2>
-					<%= image_tag(villain[:image], class: "portrait") %>
-					<p><%= villain[:description] %></p>
-					<p>
-						Movies: 
-						<% villain[:movies].each_index do |j| %>
-						<% movie = villain[:movies][j] %>
-						<% if j > 0 %>,<% end %>
-						<%= link_to movie[:title], movie[:link] %>
-						<% end %>
-					</p>
-				</div>
-			<% if i.odd? %>
-			</div>
-			<% end %>
-			<% end %>
-		</div>
-	</section>
 </main>>
