@@ -1,10 +1,107 @@
 <%= render 'nav' %>
-<section id="splash">
-	<%= image_tag("die_hard_logo_big.jpg", width: "100%") %>
-</section>
+<main>
+	<section id="splash">
+		<%= image_tag("die_hard_logo_big.jpg", width: "100%") %>
+	</section>
 
-<section id="about">
-	<h1>ABOUT</h1>
-	<p>This is the Die Hard movie series page! Keep reading if you want to learn more about the adventures of John McClane.</p>
-	<p>Enjoy! And whenever you're unsure of what to do, just ask yourself: WWJMD (What Would John McClane Do) ?</p>
-</section>
+	<section id="about">
+		<h1>ABOUT</h1>
+		<p>This is the Die Hard movie series page! Keep reading if you want to learn more about the adventures of John McClane.</p>
+		<p>Enjoy! And whenever you're unsure of what to do, just ask yourself: WWJMD (What Would John McClane Do) ?</p>
+	</section>
+
+	<section id="movies">
+		<h1>MOVIES</h1>
+
+		<div class="container-fluid">
+			<% @movies.each_index do |i| %>
+			<% if i.even? %>
+			<div class="row">
+			<% end %>
+			<% movie = @movies[i] %>
+				<div id="movie_<%= i.to_s %>" class="col-md-6 movie">
+					<h2><%= movie[:title] %> (<%= movie[:year].to_s %>)</h2>
+					<%= image_tag(movie[:poster_image], class: "poster_image") %>
+					<p><%= movie[:synopsis] %></p>
+					<p>
+						Heroes: 
+						<% movie[:heroes].each_index do |j| %>
+						<% hero = movie[:heroes][j] %>
+						<% if j > 0 %>,<% end %>
+						<%= link_to hero[:name], hero[:link] %>
+						<% end %>
+					</p>
+					<p>
+						Villains: 
+						<% movie[:villains].each_index do |j| %>
+						<% villain = movie[:villains][j] %>
+						<% if j > 0 %>,<% end %>
+						<%= link_to villain[:name], villain[:link] %>
+						<% end %>
+					</p>
+				</div>
+			<% if i.odd? %>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+	</section>
+
+	<section id="heroes">
+		<h1>HEROES</h1>
+
+		<div class="container-fluid">
+			<% @heroes.each_index do |i| %>
+			<% if i.even? %>
+			<div class="row">
+			<% end %>
+			<% hero = @heroes[i] %>
+				<div id="<%= hero[:id] %>" class="col-md-6 hero">
+					<h2><%= hero[:name] %></h2>
+					<%= image_tag(hero[:image], class: "portrait") %>
+					<p><%= hero[:description] %></p>
+					<p>
+						Movies: 
+						<% hero[:movies].each_index do |j| %>
+						<% movie = hero[:movies][j] %>
+						<% if j > 0 %>,<% end %>
+						<%= link_to movie[:title], movie[:link] %>
+						<% end %>
+					</p>
+				</div>
+			<% if i.odd? %>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+	</section>
+
+	<section id="villains">
+		<h1>VILLAINS</h1>
+
+		<div class="container-fluid">
+			<% @villains.each_index do |i| %>
+			<% if i.even? %>
+			<div class="row">
+			<% end %>
+			<% villain = @villains[i] %>
+				<div id="<%= villain[:id] %>" class="col-md-6 villain">
+					<h2><%= villain[:name] %></h2>
+					<%= image_tag(villain[:image], class: "portrait") %>
+					<p><%= villain[:description] %></p>
+					<p>
+						Movies: 
+						<% villain[:movies].each_index do |j| %>
+						<% movie = villain[:movies][j] %>
+						<% if j > 0 %>,<% end %>
+						<%= link_to movie[:title], movie[:link] %>
+						<% end %>
+					</p>
+				</div>
+			<% if i.odd? %>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+	</section>
+</main>>
